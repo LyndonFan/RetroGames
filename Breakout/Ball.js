@@ -9,8 +9,8 @@ class Ball{
   }
   update(){
     this.hasBounced = true;
-    this.x += this.vx*scl;
-    this.y += this.vy*scl;
+    this.x += this.vx*scl/2;
+    this.y += this.vy*scl/2;
     if (this.y<=0){
       this.y = 0;
       this.vy *= -1;
@@ -19,20 +19,17 @@ class Ball{
       this.x = constrain(this.x,0,width-this.size);
       this.vx *= -1;
     }
-    else if (this.y+this.size >= p.y && this.y<=p.y && this.x>=p.x && this.x+this.size <= p.x+p.width){
-      if (abs(this.x+this.size/2 - p.x - p.width/2) < p.width*3/8){
-        this.vx /= (abs(this.vx)==1)?1:2;
-        this.vy /= (abs(this.vy)==1)?-1:-2;
-      } else {
-        this.vx *= 2;
-        this.vy *= -2;
-      }
+    else if (this.y+this.size >= p.y+p.height && this.y<=p.y && this.x<=p.x+p.width && p.x-this.size <= this.x){
+      let diffx = (this.x+this.size/2) - (p.x+p.width/2);
+      let angle = diffx * Math.PI/3 / (this.size+p.width/2);
+      this.vx = Math.sin(angle);
+      this.vy = -Math.cos(angle);
     } else {
       this.hasBounced = false;
     }
     this.vx = constrain(this.vx,-4,4);
     this.vy = constrain(this.vy,-4,4);
-    if (p.y-scl<=this.y && this.y<=p.y+p.height && this.vy>0){this.vy *= -1;}
+    //if (p.y-scl<=this.y && this.y<=p.y+p.height && this.vy>0){this.vy *= -1;}
   }
   show(){
     fill(255);

@@ -6,16 +6,14 @@ class Block{
     this.height = scl*2;
   }
   canKeep(){
-    if (!b.hasBounced && dist(b.x+b.size/2,b.y+b.size/2,this.x+this.width/2,this.y+this.height/2)<=dist(b.size/2,b.size/2,b.size+this.width/2,this.height/2)){
-      if (this.y<=b.y && b.y<this.y+this.height && abs(b.x+b.size/2 - this.x - this.width/2) <= (b.size+this.width)/2){
+    if (!b.hasBounced && this.x-b.size<b.x && b.x<this.x+this.width && this.y-b.size<b.y && b.y<this.y+this.height){
+      if ((b.x-this.x<b.y-this.y && b.x-this.x+b.y-this.y<this.height-b.size) || (b.x-this.x-this.height>b.y-this.y && b.x-this.x+b.y-this.y>this.width-b.size)){
         b.vx *= -1;
-        b.hasBounced = true;
-        return false;
-      } else if (abs(b.y+b.size/2 - this.y - this.height/2) <= (b.size+this.height)/2 && b.x+b.size>=this.x && this.x+this.width>b.x){
+      } else {
         b.vy *= -1;
-        b.hasBounced = true;
-        return false;
-      } 
+      }
+      b.hasBounced = true;
+      return false;
     }
     return true;
   }

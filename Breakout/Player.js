@@ -8,7 +8,7 @@ class Player{
   update(){
     var reference;
     if (test){
-      reference = b.x+this.width/4;
+      reference = b.x+b.vx*this.width/4;
     } else {
       reference = mouseX;
     }
