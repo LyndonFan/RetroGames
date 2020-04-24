@@ -19,7 +19,7 @@ class Ball{
       this.x = constrain(this.x,0,width-this.size);
       this.vx *= -1;
     }
-    else if (this.y+this.size >= p.y+p.height && this.y<=p.y && this.x<=p.x+p.width && p.x-this.size <= this.x){
+    else if (this.y >= p.y-this.size && this.y<=p.y+p.height && this.x<=p.x+p.width && p.x-this.size <= this.x){
       let diffx = (this.x+this.size/2) - (p.x+p.width/2);
       let angle = diffx * Math.PI/3 / (this.size+p.width/2);
       this.vx = Math.sin(angle);

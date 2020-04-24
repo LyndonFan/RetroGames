@@ -11,7 +11,7 @@ class Block{
     console.log("Resetting...");
     let r1 = ceil(random(4));
     let r2 = ceil(random(4));
-    this.width = min(r1,r2) * scl;
+    this.width = min(r1,r2,ceil(speed/10)) * scl;
     this.height = (max(r1,r2)-min(r1,r2)+1) * scl;
     this.xpos = width;
   }

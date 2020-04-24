@@ -3,6 +3,7 @@ var b;
 var scl;
 var test;
 var blocks = [];
+var gameStatus = 0;
 
 function setup() {
   createCanvas(600,600);
@@ -21,6 +22,8 @@ function setup() {
 
 function draw() {
   background(0);
+  if gameStatus==1:
+    text(
   b.update();
   p.update();
   p.show();
