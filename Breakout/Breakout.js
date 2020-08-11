@@ -22,8 +22,6 @@ function setup() {
 
 function draw() {
   background(0);
-  if gameStatus==1:
-    text(
   b.update();
   p.update();
   p.show();
