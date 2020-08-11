@@ -2,8 +2,8 @@ class Player{
   constructor(){
     this.x = 0;
     this.y = width*3/4;
-    this.width = 8*scl;
-    this.height = scl;
+    this.width = scl*4;
+    this.height = scl*2;
   }
   update(){
     var reference;
