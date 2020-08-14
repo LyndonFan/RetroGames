@@ -1,7 +1,7 @@
 class Player{
   constructor(){
     this.x = 0;
-    this.y = width*3/4;
+    this.y = height*7/8;
     this.width = scl*4;
     this.height = scl*2;
   }
@@ -12,7 +12,11 @@ class Player{
     } else {
       reference = mouseX;
     }
+    reference = reference - reference%scl + (reference%scl < scl/2 ? 0 : scl);
     this.x = constrain(reference - (this.width/2),0,width - this.width);
+  }
+  shoot(){
+     bullets.push(new Bullet(this.x+this.width/2, this.y-scl, -1));
   }
   show(){
     fill(255);

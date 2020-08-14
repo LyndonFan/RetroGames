@@ -10,8 +10,8 @@ class Enemy{
     this.canShoot = (level==0);
   }
   check(){
-    for (int i = 0; i < bullets.length; i+=1){
-      var b = bullets[i];
+    for (var i = 0; i < bullets.length; i++){
+      let b = bullets[i];
       if ((this.x <= b.x <= this.x+this.width) && (this.y <= b.y <= this.y+this.height)){
         this.isHit = true;
         b.used = true;
