@@ -13,7 +13,7 @@ class Bullet{
     }
   }
   show(){
-    fill(255);
+    fill(this.vy < 0 ? 255 : 'rgb(255,0,255)');
     rect(this.x-scl/2,this.y-scl/2,scl,scl);
   }
 }
