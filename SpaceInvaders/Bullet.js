@@ -4,12 +4,13 @@ class Bullet{
     this.y = y;
     this.vy = scl/2 * d;
     this.used = false;
+    this.canDelete = false;
   }
   update(){
     this.y += this.vy;
-    //if (this.y < 0 || this.y > height){
-    //  this.canDelete = true;
-    //}
+    if (this.y < 0 || this.y > height){
+      this.canDelete = true;
+    }
   }
   show(){
     fill(255);

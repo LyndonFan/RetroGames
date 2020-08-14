@@ -10,7 +10,7 @@ function setup() {
   scl = 10;
   p = new Player();
   test = false;
-  for (var i = 0; i<11; i+=1){
+  for (var i = 0; i<11; i++){
     for (var j = 0; j<5; j++){
       enemies.push(new Enemy(width/2 - 5*scl*6 + i*scl*6,scl*6+j*scl*4,4-j));
     }
@@ -22,7 +22,11 @@ function setup() {
 function draw() {
   background(0);
   p.update();
+  p.check();
   p.show();
+  enemies.forEach(k => k.check());
+  enemies = enemies.filter(k => !k.isHit);
+  bullets = bullets.filter(k => !k.used && !k.canDelete);
   tick += 2;
   if (tick >= period){
     tick -= period;
@@ -34,8 +38,10 @@ function draw() {
     }
     p.shoot();
   }
-  enemies.forEach(k => k.show());
   bullets.forEach(k => k.update());
+  enemies.forEach(k => k.show());
   bullets.forEach(k => k.show());
   period = 96 - 55 + enemies.length;
+  //console.log(enemies);
+  //console.log(bullets);
 }
