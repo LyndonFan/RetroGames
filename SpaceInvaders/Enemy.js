@@ -14,6 +14,7 @@ class Enemy{
       if ((!b.used) && (!this.isHit) && (this.x <= b.x) && (b.x <= this.x+this.width) && (this.y <= b.y) && (b.y <= this.y+this.height)){
         this.isHit = true;
         b.used = true;
+        pause += 12;
         for (var j = 0; j < enemies.length; j++){
           if ((enemies[j].x==this.x && enemies[j].y < this.y)){
             enemies[j].level--;
@@ -30,7 +31,7 @@ class Enemy{
       toDrop = true;
     }
     
-    if (this.level==0 && random(2)>1){
+    if (this.level==0 && random(enemies.length)<1){
       this.shoot();
     }
   }
